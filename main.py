@@ -1,10 +1,10 @@
-
 from multiprocessing.connection import Listener
 import speech_recognition as sr
 import pyttsx3
 import datetime
 import pywhatkit
-import subprocess
+import wikipedia
+import webbrowser
 
 listener=sr.Recognizer()
 engine=pyttsx3.init()
@@ -15,6 +15,7 @@ def talk(text):
     engine.say(text)
     engine.runAndWait()
 
+talk("welcome to voice assistance made by piyush . how can i help you??")
 def take_command():
     try:
         with sr.Microphone() as source:
@@ -24,7 +25,7 @@ def take_command():
             command=command.lower()
             if 'alexa' in command:
                 command=command.replace('alexa',' ') 
-                          
+                # t alk(command)      
                 print(command)
             
     except:
@@ -34,7 +35,19 @@ def take_command():
 def run_alexa():
     command=take_command()
     if 'play' in command:
-        talk('playing')
-        print("playing songs")
-
+        song=command.replace('play','')
+        talk('playing'+song)
+        pywhatkit.playonyt(song)
+    
+    elif 'time' in command:
+        time=datetime.datetime.now().strftime('%H:%M')
+        talk('current time is '+ time)
+    
+    elif 'tell me about' in command:
+        tell=command.replace('tell me about','')
+        sourc=wikipedia.summary(tell,1)
+        talk(sourc)
+        print(sourc)
+    
+    
 run_alexa()
