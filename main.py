@@ -25,8 +25,7 @@ def take_command():
             command=listener.recognize_google(voice)
             command=command.lower()
             if 'alexa' in command:
-                command=command.replace('alexa',' ') 
-                # t alk(command)      
+                command=command.replace('alexa',' ')    
                 print(command)
             
     except:
@@ -65,17 +64,17 @@ def run_alexa():
             talk("Here you go to Google\n")
             webbrowser.open("google.com")
  
-    # elif 'open stackoverflow' in command:
-    #         talk("Here you go to Stack Over flow.Happy coding")
-    #         webbrowser.open("stackoverflow.com")  
-    # elif 'open github' in command:
-    #        text=command.replace('open github of','')
-    #        talk("here you go to github of"+text)
-    #        webbrowser.open("github.com/"+text)
-    # elif 'browse'  in command:
-    #        text=command.replace('browse','')
-    #        talk('here you go with'+text)
-    #        webbrowser.open('google.com/'+text)
+    elif 'open stackoverflow' in command:
+            talk("Here you go to Stack Over flow.Happy coding")
+            webbrowser.open("stackoverflow.com")  
+    elif 'open github' in command:
+           text=command.replace('open github of','')
+           talk("here you go to github of"+text)
+           webbrowser.open("github.com/"+text)
+    elif 'browse'  in command:
+           text=command.replace('browse','')
+           talk('here you go with'+text)
+           webbrowser.open('google.com/'+text)
     else:
         talk('plz say the command again')
         
